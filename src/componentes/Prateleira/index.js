@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Livro from '../Livro';
 import Carregando from '../Carregando';
 
-export default function Prateleira({ titulo }) {
+export default function Prateleira({ titulo, livrosInfo }) {
   const [taCarregando] = useState(false);
   return (
     taCarregando
@@ -13,7 +13,9 @@ export default function Prateleira({ titulo }) {
           <h2>
             {titulo}
           </h2>
-          <Livro />
+          {livrosInfo && livrosInfo.map((livroInfo) => (
+            <Livro key={livroInfo.id} livroInfo={livroInfo} />
+          ))}
         </div>
       )
   );
@@ -21,4 +23,5 @@ export default function Prateleira({ titulo }) {
 
 Prateleira.propTypes = {
   titulo: PropTypes.string.isRequired,
+  livrosInfo: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
