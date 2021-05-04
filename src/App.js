@@ -2,14 +2,12 @@ import React from 'react';
 
 import LerNaArvoreProvider from './context/LerNaArvoreProvider';
 
-import Estante from './componentes/Estante';
-import Header from './componentes/Header';
+import Inicio from './pages/Inicio';
 
 function App() {
   return (
     <LerNaArvoreProvider>
-      <Header />
-      <Estante />
+      <Inicio />
     </LerNaArvoreProvider>
   );
 }

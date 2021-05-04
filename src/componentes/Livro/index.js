@@ -1,20 +1,29 @@
 import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 export default function Livro({ livroInfo }) {
   return (
-    <div>
+    <ExibirLivro>
       <img
         src={livroInfo.volumeInfo.imageLinks === undefined
           ? ''
-          : `${livroInfo.volumeInfo.imageLinks.thumbnail}`}
+          : `${livroInfo.volumeInfo.imageLinks.smallThumbnail}`}
         alt={`capa do livro ${livroInfo.volumeInfo.title}`}
       />
       <p>{livroInfo.volumeInfo.title}</p>
-    </div>
+    </ExibirLivro>
   );
 }
 
 Livro.propTypes = {
   livroInfo: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
+
+const ExibirLivro = styled.div`
+  img {
+    margin: 5px 0;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+  }
+`;

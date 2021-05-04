@@ -6,29 +6,35 @@ import buscarLivrosPorTemas from '../../services/buscarLivrosPorTema';
 import LerNaArvoreContext from '../../context/LerNaArvoreContext';
 
 export default function Estante() {
-  const { termoBusca } = useContext(LerNaArvoreContext);
-  const [temLivrosFiltrados, setTemLivrosFiltrados] = useState(false);
+  const {
+    termoBusca,
+    setTaCarregando,
+    temLivrosFiltrados,
+    setTemLivrosFiltrados,
+  } = useContext(LerNaArvoreContext);
   const [livrosFiltrados, setLivrosFiltrados] = useState([]);
-  const [livrosAventura, setLivrosAventura] = useState([]);
-  const [livrosAcao, setLivrosAcao] = useState([]);
+  const [livrosPadrao, setLivrosPadrao] = useState([]);
   const [livrosDestaque, setLivrosDestaque] = useState([]);
-  const [livrosInfantil, setLivrosInfantil] = useState([]);
 
   const iniciandoPadrao = () => {
     const buscarLivrosPrateleiras = async () => {
-      const livrosPrateleiraAventura = await buscarLivrosPorTemas('aventura');
-      setLivrosAventura(livrosPrateleiraAventura);
-      const livrosPrateleiraAcao = await buscarLivrosPorTemas('acao');
-      setLivrosAcao(livrosPrateleiraAcao);
+      const livrosPrateleiraPadrao = await buscarLivrosPorTemas('aventura');
+      setLivrosPadrao(livrosPrateleiraPadrao);
       const livrosPrateleiraDestaque = await buscarLivrosPorTemas('chocolate');
       setLivrosDestaque(livrosPrateleiraDestaque);
-      const livrosPrateleiraInfantil = await buscarLivrosPorTemas('infantil');
-      setLivrosInfantil(livrosPrateleiraInfantil);
     };
     buscarLivrosPrateleiras();
   };
 
+  const listaInicialEstante = [
+    { titulo: 'Aventura', dados: livrosPadrao },
+    { titulo: 'Infantil', dados: livrosPadrao },
+    { titulo: 'Destaque', dados: livrosDestaque },
+    { titulo: 'Ação', dados: livrosPadrao },
+  ];
+
   useEffect(() => {
+    setTimeout(() => setTaCarregando(false), 2000);
     iniciandoPadrao();
   }, []);
 
@@ -48,10 +54,9 @@ export default function Estante() {
       ? (<LivrosPorBusca livrosInfo={livrosFiltrados} />)
       : (
         <>
-          <Prateleira titulo="Aventura" livrosInfo={livrosAventura} />
-          <Prateleira titulo="Infantil" livrosInfo={livrosInfantil} />
-          <Prateleira titulo="Destaque" livrosInfo={livrosDestaque} />
-          <Prateleira titulo="Ação" livrosInfo={livrosAcao} />
+          {listaInicialEstante.map(({ titulo, dados }) => (
+            <Prateleira titulo={titulo} livrosInfo={dados} />
+          ))}
         </>
       )
   );

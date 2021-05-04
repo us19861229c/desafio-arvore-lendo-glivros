@@ -5,11 +5,16 @@ import LerNaArvoreContex from './LerNaArvoreContext';
 
 function LerNaArvoreProvider({ children }) {
   const [termoBusca, setTermoBusca] = useState('');
+  const [taCarregando, setTaCarregando] = useState(true);
+  const [temLivrosFiltrados, setTemLivrosFiltrados] = useState(false);
 
   const valoresDoContexto = {
     termoBusca,
     setTermoBusca,
-
+    taCarregando,
+    setTaCarregando,
+    temLivrosFiltrados,
+    setTemLivrosFiltrados,
   };
 
   return (
