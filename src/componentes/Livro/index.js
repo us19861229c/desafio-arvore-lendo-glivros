@@ -8,8 +8,8 @@ export default function Livro({ livroInfo }) {
       <img
         src={livroInfo.volumeInfo.imageLinks === undefined
           ? ''
-          : `${livroInfo.volumeInfo.imageLinks.smallThumbnail}`}
-        alt={`capa do livro ${livroInfo.volumeInfo.title}`}
+          : `${livroInfo.volumeInfo.imageLinks.thumbnail}`}
+        alt="capa do livro"
       />
       <p>{livroInfo.volumeInfo.title}</p>
     </ExibirLivro>

@@ -50,7 +50,8 @@ const PrateleiraCarregando = styled.div`
 
 const FileiraLivros = styled.div`
   display: flex;
-  background-color: transparent;
+  margin-top: 5px;
+
   img {
     width: 93px;
     height: 138px;
@@ -60,7 +61,9 @@ const FileiraLivros = styled.div`
 const PrateleiraLivros = styled.div`
   margin-bottom: 8px;
   padding: 10px;
-  &:nth-child(4) {
+  height: 219px;
+
+  &:nth-last-child(2) {
    background-color: #47B7ED;
    color: #FFFFFF;
     & p {

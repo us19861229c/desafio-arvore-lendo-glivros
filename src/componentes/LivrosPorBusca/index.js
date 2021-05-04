@@ -21,6 +21,7 @@ const PrateleiraLivros = styled.div`
  display: flex;
  flex-wrap: wrap;
  justify-content: center;
+ margin: 10px 5px;
 
  img {
     width:  94px;

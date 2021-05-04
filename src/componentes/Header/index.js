@@ -67,6 +67,8 @@ const Header = styled.header`
     color: #86878B;
     font-size: 1rem;
     font-weight: bold;
+    position: relative;
+    left: -80px;
   }
 
   a {
@@ -84,10 +86,10 @@ const Header = styled.header`
 const Formulario = styled.form`
   input { 
     left: 0;
-    padding: 20px 0 30px 1rem;
+    padding: 20px 1rem 30px;
     position: absolute;
     top: 0;
-    width: 320px;
+    width: calc(320px - 2rem);
     overflow: hidden;
 
     border: none;
@@ -97,6 +99,11 @@ const Formulario = styled.form`
     font-size: 14px;
     font-weight: 400;
     line-height: 16px;
+
+    &::placeholder,
+    &::-webkit-input-placeholder {
+      color: rgba( 89, 90, 92, .5);
+    }
   }
- 
+
 `;
