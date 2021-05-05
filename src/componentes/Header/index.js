@@ -1,4 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, {
+  useContext, useState, useRef, useEffect,
+} from 'react';
 import styled from 'styled-components';
 
 import LerNaArvoreContext from '../../context/LerNaArvoreContext';
@@ -11,6 +13,14 @@ export default function Topo() {
   const { setTermoBusca, temLivrosFiltrados } = useContext(LerNaArvoreContext);
   const [mostraBusca, setMostraBusca] = useState(false);
   const [localTermoBusca, setLocalTermoBusca] = useState('');
+
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (mostraBusca) {
+      inputRef.current.focus();
+    }
+  }, [mostraBusca]);
 
   const enviarTermoBusca = (evento) => {
     evento.preventDefault();
@@ -48,6 +58,8 @@ export default function Topo() {
               value={localTermoBusca}
               onChange={(evento) => setLocalTermoBusca(evento.target.value)}
               onKeyPress={(evento) => (evento.key === 'Enter' ? enviarTermoBusca(evento) : null)}
+              onBlur={() => setMostraBusca(false)}
+              ref={inputRef}
             />
           </Formulario>
         )

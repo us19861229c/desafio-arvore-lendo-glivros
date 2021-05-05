@@ -55,7 +55,7 @@ export default function Estante() {
       : (
         <>
           {listaInicialEstante.map(({ titulo, dados }) => (
-            <Prateleira titulo={titulo} livrosInfo={dados} />
+            <Prateleira key={titulo} titulo={titulo} livrosInfo={dados} />
           ))}
         </>
       )
