@@ -25,10 +25,7 @@ function LerNaArvoreProvider({ children }) {
 }
 
 LerNaArvoreProvider.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.shape({
-    termoBusca: PropTypes.string,
-    setTermoBusca: PropTypes.func,
-  })).isRequired,
+  children: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default LerNaArvoreProvider;

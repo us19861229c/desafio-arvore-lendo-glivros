@@ -34,7 +34,7 @@ export default function Estante() {
   ];
 
   useEffect(() => {
-    setTimeout(() => setTaCarregando(false), 2000);
+    setTimeout(() => setTaCarregando(false), 1000);
     iniciandoPadrao();
   }, []);
 
